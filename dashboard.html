@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personalized Welfare Dashboard - Your Poverty Reduction Hub">
+    <title>My Welfare Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Sans+Telugu:wght@400;600&family=Noto+Sans+Tamil:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="dashboard-styles.css">
+</head>
+
+<body>
+    <!-- Nebula Background -->
+    <div class="nebula-background">
+        <div class="nebula-layer layer-1"></div>
+        <div class="nebula-layer layer-2"></div>
+        <div class="nebula-layer layer-3"></div>
+        <div class="particle-field" id="particleField"></div>
+    </div>
+
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <div class="logo-mini">
+                <span class="logo-icon">🌟</span>
+                <span class="logo-text">Welfare Uplift</span>
+            </div>
+        </div>
+        <div class="nav-center">
+            <h1 class="page-title" data-translate="myDashboard">My Dashboard</h1>
+        </div>
+        <div class="nav-right">
+            <div class="language-selector">
+                <button class="lang-btn" id="langBtn">
+                    <span class="lang-icon">🌐</span>
+                    <span id="currentLang">EN</span>
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <button class="lang-option" data-lang="en">🇬🇧 English</button>
+                    <button class="lang-option" data-lang="hi">🇮🇳 हिन्दी</button>
+                    <button class="lang-option" data-lang="te">🇮🇳 తెలుగు</button>
+                    <button class="lang-option" data-lang="ta">🇮🇳 தமிழ்</button>
+                </div>
+            </div>
+            <button class="profile-btn" id="profileBtn">
+                <span class="profile-avatar">👤</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Dashboard Content -->
+    <div class="dashboard-content">
+        <!-- Hero Section - Profile Card -->
+        <section class="hero-section">
+            <div class="profile-card floating">
+                <div class="profile-header">
+                    <div class="profile-avatar-large">
+                        <div class="avatar-ring"></div>
+                        <div class="avatar-photo">👤</div>
+                    </div>
+                    <div class="profile-info">
+                        <h2 class="user-name" id="userName">Rajesh Kumar</h2>
+                        <p class="user-location">📍 Guntur, Andhra Pradesh</p>
+                    </div>
+                </div>
+                <div class="profile-stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="welfareScore">78%</div>
+                            <div class="stat-label" data-translate="welfareScore">Welfare Score</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="eligibleSchemes">5</div>
+                            <div class="stat-label" data-translate="eligibleSchemes">Eligible Schemes</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="savingsPotential">₹45K</div>
+                            <div class="stat-label" data-translate="savingsPotential">Savings Potential</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="welfareStars">125</div>
+                            <div class="stat-label" data-translate="welfareStars">Welfare Stars</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section class="features-grid">
+            <!-- Quick Chat Module -->
+            <div class="feature-module chat-module floating">
+                <div class="module-header">
+                    <div class="module-title-row">
+                        <span class="module-icon">💬</span>
+                        <h3 data-translate="quickChat">Quick Chat</h3>
+                    </div>
+                    <button class="expand-btn" onclick="window.location.href='index.html'">→</button>
+                </div>
+                <div class="module-content">
+                    <div class="chat-preview">
+                        <div class="chat-bubble bot">
+                            <span class="bubble-avatar">🤖</span>
+                            <div class="bubble-text" data-translate="chatWelcome">Hello! How can I help you today?</div>
+                        </div>
+                    </div>
+                    <div class="chat-quick-input">
+                        <input type="text" placeholder="Type a message..." data-translate-placeholder="typeMessage">
+                        <button class="voice-btn-mini">🎤</button>
+                        <button class="send-btn-mini">→</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scheme Matcher Module -->
+            <div class="feature-module matcher-module floating">
+                <div class="module-header">
+                    <div class="module-title-row">
+                        <span class="module-icon">🎯</span>
+                        <h3 data-translate="schemeMatcher">Top Scheme Matches</h3>
+                    </div>
+                    <span class="badge-new">3 New</span>
+                </div>
+                <div class="module-content">
+                    <div class="scheme-match-item">
+                        <div class="match-left">
+                            <div class="match-icon">🏠</div>
+                            <div class="match-info">
+                                <h4>PM Awas Yojana</h4>
+                                <p class="match-benefit">₹2.5L Housing Subsidy</p>
+                            </div>
+                        </div>
+                        <div class="match-right">
+                            <div class="match-score">90%</div>
+                            <button class="apply-btn-mini">Apply</button>
+                        </div>
+                    </div>
+                    <div class="scheme-match-item">
+                        <div class="match-left">
+                            <div class="match-icon">🏥</div>
+                            <div class="match-info">
+                                <h4>Ayushman Bharat</h4>
+                                <p class="match-benefit">₹5L Health Coverage</p>
+                            </div>
+                        </div>
+                        <div class="match-right">
+                            <div class="match-score">85%</div>
+                            <button class="apply-btn-mini">Apply</button>
+                        </div>
+                    </div>
+                    <div class="scheme-match-item">
+                        <div class="match-left">
+                            <div class="match-icon">👷</div>
+                            <div class="match-info">
+                                <h4>MGNREGA</h4>
+                                <p class="match-benefit">100 Days Work</p>
+                            </div>
+                        </div>
+                        <div class="match-right">
+                            <div class="match-score">75%</div>
+                            <button class="apply-btn-mini">Apply</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Application Tracker Module -->
+            <div class="feature-module tracker-module floating">
+                <div class="module-header">
+                    <div class="module-title-row">
+                        <span class="module-icon">📊</span>
+                        <h3 data-translate="appTracker">My Applications</h3>
+                    </div>
+                    <span class="badge-status">2 Pending</span>
+                </div>
+                <div class="module-content">
+                    <div class="app-timeline">
+                        <div class="timeline-item status-approved">
+                            <div class="timeline-dot">✅</div>
+                            <div class="timeline-content">
+                                <h4>Ayushman Bharat</h4>
+                                <p class="timeline-status">Approved</p>
+                                <p class="timeline-date">Jan 28, 2026</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item status-pending">
+                            <div class="timeline-dot">⏳</div>
+                            <div class="timeline-content">
+                                <h4>PM Awas Yojana</h4>
+                                <p class="timeline-status">Under Review</p>
+                                <div class="mini-progress">
+                                    <div class="mini-progress-bar" style="width: 60%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item status-docs">
+                            <div class="timeline-dot">📄</div>
+                            <div class="timeline-content">
+                                <h4>MGNREGA</h4>
+                                <p class="timeline-status">Docs Required</p>
+                                <button class="upload-btn-mini">Upload</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Dashboard Module -->
+            <div class="feature-module progress-module floating">
+                <div class="module-header">
+                    <div class="module-title-row">
+                        <span class="module-icon">📈</span>
+                        <h3 data-translate="progress">Your Progress</h3>
+                    </div>
+                </div>
+                <div class="module-content">
+                    <div class="progress-grid">
+                        <div class="progress-item">
+                            <div class="circular-mini">
+                                <svg viewBox="0 0 36 36">
+                                    <circle cx="18" cy="18" r="16" class="circle-bg" />
+                                    <circle cx="18" cy="18" r="16" class="circle-progress"
+                                        style="stroke-dashoffset: 0;" />
+                                </svg>
+                                <span class="circle-percent">100%</span>
+                            </div>
+                            <div class="progress-label">
+                                <span class="progress-icon">🏥</span>
+                                <span>Health</span>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="circular-mini">
+                                <svg viewBox="0 0 36 36">
+                                    <circle cx="18" cy="18" r="16" class="circle-bg" />
+                                    <circle cx="18" cy="18" r="16" class="circle-progress"
+                                        style="stroke-dashoffset: 35;" />
+                                </svg>
+                                <span class="circle-percent">65%</span>
+                            </div>
+                            <div class="progress-label">
+                                <span class="progress-icon">🏠</span>
+                                <span>Housing</span>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="circular-mini">
+                                <svg viewBox="0 0 36 36">
+                                    <circle cx="18" cy="18" r="16" class="circle-bg" />
+                                    <circle cx="18" cy="18" r="16" class="circle-progress"
+                                        style="stroke-dashoffset: 50;" />
+                                </svg>
+                                <span class="circle-percent">50%</span>
+                            </div>
+                            <div class="progress-label">
+                                <span class="progress-icon">💼</span>
+                                <span>Employment</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievements">
+                        <h4 class="achievements-title">🏆 Achievements</h4>
+                        <div class="achievement-row">
+                            <span class="badge-mini earned">⭐</span>
+                            <span class="badge-mini earned">🏆</span>
+                            <span class="badge-mini locked">💎</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Advisor Module -->
+            <div class="feature-module advisor-module floating">
+                <div class="module-header">
+                    <div class="module-title-row">
+                        <span class="module-icon">🤖</span>
+                        <h3 data-translate="aiAdvisor">AI Advisor</h3>
+                    </div>
+                    <span class="pulse-dot"></span>
+                </div>
+                <div class="module-content">
+                    <div class="advisor-tip">
+                        <div class="tip-icon">💡</div>
+                        <div class="tip-content">
+                            <h4>Recommendation</h4>
+                            <p>You're eligible for PM-KISAN. Expected: ₹6,000/year</p>
+                            <button class="tip-btn">Learn More →</button>
+                        </div>
+                    </div>
+                    <div class="advisor-tip">
+                        <div class="tip-icon">💪</div>
+                        <div class="tip-content">
+                            <h4>Motivation</h4>
+                            <p>"Every step forward is progress!"</p>
+                        </div>
+                    </div>
+                    <button class="counseling-btn-mini">
+                        <span>📞</span>
+                        <span data-translate="counseling">Talk to Counselor</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Financial Planner Module -->
+            <div class="feature-module finance-module floating">
+                <div class="module-header">
+                    <div class="module-title-row">
+                        <span class="module-icon">💰</span>
+                        <h3 data-translate="financePlanner">Financial Planner</h3>
+                    </div>
+                    <span class="trend-badge">↗ +12%</span>
+                </div>
+                <div class="module-content">
+                    <div class="finance-total">
+                        <div class="finance-label">Annual Benefits</div>
+                        <div class="finance-amount">₹45,000</div>
+                    </div>
+                    <div class="finance-breakdown">
+                        <div class="breakdown-row">
+                            <span class="breakdown-label">🌾 PM-KISAN</span>
+                            <span class="breakdown-value">₹6,000</span>
+                        </div>
+                        <div class="breakdown-row">
+                            <span class="breakdown-label">🏠 Housing</span>
+                            <span class="breakdown-value">₹25,000</span>
+                        </div>
+                        <div class="breakdown-row">
+                            <span class="breakdown-label">👷 MGNREGA</span>
+                            <span class="breakdown-value">₹35,000</span>
+                        </div>
+                        <div class="breakdown-row">
+                            <span class="breakdown-label">🌾 PDS</span>
+                            <span class="breakdown-value">₹12,000</span>
+                        </div>
+                    </div>
+                    <button class="ar-preview-btn">
+                        <span>🔮</span>
+                        <span data-translate="arPreview">AR Preview</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-actions">
+        <button class="fab emergency" title="Emergency Helpline">
+            <span class="fab-icon">📞</span>
+        </button>
+        <button class="fab offline" id="offlineBtn" title="Offline Mode">
+            <span class="fab-icon">📡</span>
+            <span class="fab-badge" id="syncBadge">✓</span>
+        </button>
+    </div>
+
+    <script src="dashboard-script.js"></script>
+</body>
+
+</html>

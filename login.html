@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description"
+        content="Intelligent AI-Based Platform for Welfare Support and Poverty Reduction - Secure Login">
+    <title>Welfare Uplift - Secure Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Sans+Telugu:wght@400;600&family=Noto+Sans+Tamil:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="login-styles.css">
+</head>
+
+<body>
+    <!-- Nebula Background with Particles -->
+    <div class="nebula-background">
+        <div class="nebula-layer layer-1"></div>
+        <div class="nebula-layer layer-2"></div>
+        <div class="nebula-layer layer-3"></div>
+        <div class="particle-field" id="particleField"></div>
+    </div>
+
+    <!-- Orbiting Avatars -->
+    <div class="avatar-orbit" id="avatarOrbit">
+        <div class="avatar-orb" style="--orbit-delay: 0s;">
+            <div class="avatar-icon">👨‍🌾</div>
+            <div class="avatar-label">Rural Youth</div>
+        </div>
+        <div class="avatar-orb" style="--orbit-delay: 2s;">
+            <div class="avatar-icon">👩‍💼</div>
+            <div class="avatar-label">Working Woman</div>
+        </div>
+        <div class="avatar-orb" style="--orbit-delay: 4s;">
+            <div class="avatar-icon">👴</div>
+            <div class="avatar-label">Senior Citizen</div>
+        </div>
+        <div class="avatar-orb" style="--orbit-delay: 6s;">
+            <div class="avatar-icon">👨‍👩‍👧‍👦</div>
+            <div class="avatar-label">Family</div>
+        </div>
+    </div>
+
+    <!-- Main Login Container -->
+    <div class="login-container" id="loginContainer">
+        <!-- Logo Orb -->
+        <div class="logo-orb">
+            <div class="logo-pulse"></div>
+            <div class="logo-content">
+                <div class="logo-icon">🌟</div>
+                <h1 class="logo-text">Welfare Uplift</h1>
+                <p class="logo-tagline" data-translate="tagline">Empowering Communities, Reducing Poverty</p>
+            </div>
+        </div>
+
+        <!-- Login Steps -->
+        <div class="login-steps">
+            <!-- Step 1: Welcome & Method Selection -->
+            <div class="login-step active" id="step1">
+                <h2 class="step-title" data-translate="welcomeTitle">Welcome to Your Welfare Journey</h2>
+                <p class="step-subtitle" data-translate="welcomeSubtitle">Choose your preferred login method</p>
+
+                <div class="login-methods">
+                    <button class="method-orb" id="mobileLoginBtn">
+                        <div class="method-icon">📱</div>
+                        <div class="method-label" data-translate="mobileLogin">Mobile Number</div>
+                        <div class="method-desc" data-translate="mobileDesc">OTP Verification</div>
+                    </button>
+
+                    <button class="method-orb" id="aadhaarLoginBtn">
+                        <div class="method-icon">🆔</div>
+                        <div class="method-label" data-translate="aadhaarLogin">Aadhaar</div>
+                        <div class="method-desc" data-translate="aadhaarDesc">Secure & Fast</div>
+                    </button>
+
+                    <button class="method-orb" id="voiceLoginBtn">
+                        <div class="method-icon">🎤</div>
+                        <div class="method-label" data-translate="voiceLogin">Voice Login</div>
+                        <div class="method-desc" data-translate="voiceDesc">Speak to Login</div>
+                    </button>
+
+                    <button class="method-orb" id="biometricLoginBtn">
+                        <div class="method-icon">👆</div>
+                        <div class="method-label" data-translate="biometricLogin">Biometric</div>
+                        <div class="method-desc" data-translate="biometricDesc">Fingerprint/Face</div>
+                    </button>
+                </div>
+
+                <div class="social-login">
+                    <p class="social-label" data-translate="orContinue">Or continue with</p>
+                    <div class="social-orbs">
+                        <button class="social-orb google">
+                            <span class="social-icon">G</span>
+                        </button>
+                        <button class="social-orb phonepe">
+                            <span class="social-icon">💜</span>
+                        </button>
+                        <button class="social-orb govt">
+                            <span class="social-icon">🇮🇳</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Mobile Number Entry -->
+            <div class="login-step" id="step2">
+                <button class="back-btn" onclick="goToStep(1)">← Back</button>
+                <h2 class="step-title" data-translate="enterMobile">Enter Your Mobile Number</h2>
+
+                <div class="form-orb">
+                    <div class="input-group">
+                        <label for="mobileInput">Mobile Number</label>
+                        <div class="input-wrapper">
+                            <span class="country-code">+91</span>
+                            <input type="tel" id="mobileInput" placeholder="10-digit number" maxlength="10"
+                                pattern="[0-9]{10}">
+                        </div>
+                    </div>
+                    <button class="primary-btn" id="sendOtpBtn">
+                        <span class="btn-text" data-translate="sendOtp">Send OTP</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </div>
+
+                <div class="voice-option">
+                    <button class="voice-btn" id="voiceMobileBtn">
+                        <span class="voice-icon">🎤</span>
+                        <span data-translate="speakNumber">Speak your number</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: OTP Verification -->
+            <div class="login-step" id="step3">
+                <button class="back-btn" onclick="goToStep(2)">← Back</button>
+                <h2 class="step-title" data-translate="verifyOtp">Verify OTP</h2>
+                <p class="step-subtitle">Sent to <strong id="displayMobile"></strong></p>
+
+                <div class="form-orb">
+                    <div class="otp-inputs">
+                        <input type="text" class="otp-box" maxlength="1" pattern="[0-9]">
+                        <input type="text" class="otp-box" maxlength="1" pattern="[0-9]">
+                        <input type="text" class="otp-box" maxlength="1" pattern="[0-9]">
+                        <input type="text" class="otp-box" maxlength="1" pattern="[0-9]">
+                        <input type="text" class="otp-box" maxlength="1" pattern="[0-9]">
+                        <input type="text" class="otp-box" maxlength="1" pattern="[0-9]">
+                    </div>
+
+                    <div class="otp-timer">
+                        <span data-translate="resendIn">Resend OTP in</span> <strong id="otpTimer">30s</strong>
+                    </div>
+
+                    <button class="primary-btn" id="verifyOtpBtn">
+                        <span class="btn-text" data-translate="verify">Verify</span>
+                        <span class="btn-icon">✓</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 4: User Details Form -->
+            <div class="login-step" id="step4">
+                <h2 class="step-title" data-translate="completeProfile">Complete Your Profile</h2>
+                <p class="step-subtitle" data-translate="helpUsServe">Help us serve you better</p>
+
+                <div class="form-orb scrollable">
+                    <div class="input-group">
+                        <label for="fullName" data-translate="fullName">Full Name</label>
+                        <input type="text" id="fullName" placeholder="As per Aadhaar">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="aadhaarNumber" data-translate="aadhaarNumber">Aadhaar Number (Optional)</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="aadhaarNumber" placeholder="XXXX-XXXX-XXXX" maxlength="14">
+                            <button class="input-addon-btn" id="qrScanBtn">📷 Scan</button>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="dob" data-translate="dob">Date of Birth</label>
+                            <input type="date" id="dob">
+                        </div>
+                        <div class="input-group">
+                            <label for="gender" data-translate="gender">Gender</label>
+                            <select id="gender">
+                                <option value="">Select</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="address" data-translate="address">Address</label>
+                        <textarea id="address" rows="2" placeholder="Street, Village/Town"></textarea>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="district" data-translate="district">District</label>
+                            <input type="text" id="district" placeholder="Your district">
+                        </div>
+                        <div class="input-group">
+                            <label for="state" data-translate="state">State</label>
+                            <select id="state">
+                                <option value="">Select State</option>
+                                <option value="AP">Andhra Pradesh</option>
+                                <option value="TN">Tamil Nadu</option>
+                                <option value="TG">Telangana</option>
+                                <option value="KA">Karnataka</option>
+                                <option value="MH">Maharashtra</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="income" data-translate="income">Monthly Income</label>
+                            <select id="income">
+                                <option value="">Select Range</option>
+                                <option value="0-5000">Below ₹5,000</option>
+                                <option value="5000-10000">₹5,000 - ₹10,000</option>
+                                <option value="10000-25000">₹10,000 - ₹25,000</option>
+                                <option value="25000+">Above ₹25,000</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="familySize" data-translate="familySize">Family Size</label>
+                            <input type="number" id="familySize" min="1" max="20" placeholder="Number of members">
+                        </div>
+                    </div>
+
+                    <button class="primary-btn" id="completeProfileBtn">
+                        <span class="btn-text" data-translate="continue">Continue to Dashboard</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 5: Biometric Verification -->
+            <div class="login-step" id="step5">
+                <h2 class="step-title" data-translate="biometricVerify">Biometric Verification</h2>
+
+                <div class="biometric-scanner-container">
+                    <div class="biometric-orb">
+                        <div class="scan-ring"></div>
+                        <div class="scan-ring delay-1"></div>
+                        <div class="scan-icon">👆</div>
+                    </div>
+                    <p class="scan-instruction" data-translate="placeFingerprint">Place your finger on the sensor</p>
+                    <div class="scan-status" id="scanStatus">Scanning...</div>
+                </div>
+
+                <button class="secondary-btn" onclick="goToStep(1)">
+                    <span data-translate="useOtherMethod">Use another method</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Privacy Badge -->
+        <div class="privacy-badge">
+            <span class="privacy-icon">🔒</span>
+            <span class="privacy-text" data-translate="privacyText">Your data is encrypted and used only for welfare
+                matching</span>
+        </div>
+
+        <!-- Language Selector -->
+        <div class="language-selector-login">
+            <button class="lang-option active" data-lang="en">English</button>
+            <button class="lang-option" data-lang="hi">हिन्दी</button>
+            <button class="lang-option" data-lang="te">తెలుగు</button>
+            <button class="lang-option" data-lang="ta">தமிழ்</button>
+        </div>
+    </div>
+
+    <!-- Success Animation -->
+    <div class="success-overlay" id="successOverlay">
+        <div class="success-orb">
+            <div class="success-icon">✓</div>
+            <div class="success-particles"></div>
+        </div>
+        <h2 class="success-title" data-translate="loginSuccess">Login Successful!</h2>
+        <p class="success-subtitle" data-translate="redirecting">Redirecting to your dashboard...</p>
+    </div>
+
+    <script src="login-script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description"
+        content="Intelligent AI-Based Platform for Welfare Support and Poverty Reduction - Antigravity Chatbot Interface">
+    <title>AI Welfare Support - Antigravity Chat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Sans+Telugu:wght@400;600&family=Noto+Sans+Tamil:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <span class="time" id="currentTime">23:17</span>
+        <div class="status-icons">
+            <span class="signal">📶</span>
+            <span class="battery">🔋 85%</span>
+        </div>
+    </div>
+
+    <!-- Floating Particles Background -->
+    <div class="particle-container" id="particleContainer"></div>
+
+    <!-- Language Selector Orb -->
+    <div class="language-orb" id="languageOrb">
+        <div class="orb-glow"></div>
+        <div class="language-options">
+            <button class="lang-btn active" data-lang="en" title="English">
+                <span class="flag">🇬🇧</span>
+                <span class="lang-text">EN</span>
+            </button>
+            <button class="lang-btn" data-lang="hi" title="हिन्दी">
+                <span class="flag">🇮🇳</span>
+                <span class="lang-text">हिं</span>
+            </button>
+            <button class="lang-btn" data-lang="te" title="తెలుగు">
+                <span class="flag">🇮🇳</span>
+                <span class="lang-text">తె</span>
+            </button>
+            <button class="lang-btn" data-lang="ta" title="தமிழ்">
+                <span class="flag">🇮🇳</span>
+                <span class="lang-text">த</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Central Dual Chat Hub -->
+    <div class="chat-hub" id="chatHub">
+        <div class="hub-orb">
+            <div class="orb-core"></div>
+            <div class="pulse-ring"></div>
+            <div class="pulse-ring delay-1"></div>
+            <div class="pulse-ring delay-2"></div>
+        </div>
+        <div class="hub-modes">
+            <button class="mode-btn text-mode active" id="textModeBtn">
+                <div class="mode-icon">💬</div>
+                <div class="mode-label" data-translate="textChat">Text Chat</div>
+                <div class="mode-sublabel" data-translate="multilingual">Multilingual Keyboard</div>
+            </button>
+            <button class="mode-btn voice-mode" id="voiceModeBtn">
+                <div class="mode-icon pulsing-mic">🎤</div>
+                <div class="mode-label" data-translate="voiceChat">Voice Chat</div>
+                <div class="mode-sublabel" data-translate="realtime">Real-time Speech</div>
+                <div class="waveform" id="waveform">
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Personalized Dashboard Orb -->
+    <div class="dashboard-orb" id="dashboardOrb">
+        <div class="orb-container">
+            <div class="dashboard-core">
+                <div class="progress-rings">
+                    <svg class="progress-ring" width="120" height="120">
+                        <circle class="ring-bg" cx="60" cy="60" r="52" />
+                        <circle class="ring-progress" id="povertyProgress" cx="60" cy="60" r="52" />
+                    </svg>
+                    <div class="progress-label">
+                        <div class="progress-value" id="progressValue">0%</div>
+                        <div class="progress-text" data-translate="povertyReduction">Poverty Reduction</div>
+                    </div>
+                </div>
+                <div class="dashboard-stats">
+                    <div class="stat-item">
+                        <span class="stat-icon">💰</span>
+                        <span class="stat-value" id="savingsValue">₹0</span>
+                        <span class="stat-label" data-translate="savings">Savings</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">⭐</span>
+                        <span class="stat-value" id="starsValue">0</span>
+                        <span class="stat-label" data-translate="welfareStars">Welfare Stars</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">📋</span>
+                        <span class="stat-value" id="applicationsValue">0</span>
+                        <span class="stat-label" data-translate="applications">Applications</span>
+                    </div>
+                </div>
+                <button class="dashboard-btn" id="viewPlanBtn" data-translate="viewPlan">View My Plan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Eligibility Checker Module -->
+    <div class="floating-module eligibility-module" id="eligibilityModule">
+        <div class="module-header">
+            <span class="module-icon">✓</span>
+            <h3 data-translate="eligibilityChecker">Eligibility Checker</h3>
+            <span class="accuracy-badge">95% Accurate</span>
+        </div>
+        <div class="module-content">
+            <p data-translate="instantMatch">Instant scheme matcher with AI-powered analysis</p>
+            <button class="module-btn primary" id="startCheckerBtn">
+                <span class="btn-icon">🎯</span>
+                <span data-translate="checkNow">Check Now</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Application Tracker -->
+    <div class="floating-module tracker-module" id="trackerModule">
+        <div class="module-header">
+            <span class="module-icon">📊</span>
+            <h3 data-translate="applicationTracker">Application Tracker</h3>
+        </div>
+        <div class="tracker-timeline" id="trackerTimeline">
+            <!-- Dynamic application status items -->
+        </div>
+    </div>
+
+    <!-- Emotional AI Support -->
+    <div class="emotional-support" id="emotionalSupport">
+        <div class="emotion-indicator" id="emotionIndicator">
+            <div class="emotion-icon">😊</div>
+            <div class="emotion-text" data-translate="hereForYou">I'm here for you</div>
+        </div>
+        <div class="support-actions" id="supportActions" style="display: none;">
+            <button class="support-btn" id="counselingBtn">
+                <span>🤝</span>
+                <span data-translate="counseling">Counseling</span>
+            </button>
+            <button class="support-btn" id="motivationBtn">
+                <span>💪</span>
+                <span data-translate="motivation">Motivation</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Gamification Panel -->
+    <div class="gamification-panel" id="gamificationPanel">
+        <div class="stars-display">
+            <span class="star-icon animated">⭐</span>
+            <span class="star-count" id="starCount">0</span>
+        </div>
+        <div class="achievement-popup" id="achievementPopup">
+            <div class="achievement-content">
+                <span class="achievement-icon">🏆</span>
+                <p class="achievement-text"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offline Mode Indicator -->
+    <div class="offline-indicator" id="offlineIndicator">
+        <span class="offline-icon">📡</span>
+        <span class="offline-text" data-translate="offlineMode">Offline Mode</span>
+    </div>
+
+    <!-- AR Preview Module -->
+    <div class="ar-module" id="arModule">
+        <button class="ar-trigger" id="arTrigger">
+            <span class="ar-icon">🔮</span>
+            <span data-translate="arPreview">AR Preview</span>
+        </button>
+    </div>
+
+    <!-- Biometric Login Orb -->
+    <div class="biometric-orb" id="biometricOrb">
+        <div class="biometric-scanner">
+            <div class="scanner-ring"></div>
+            <div class="scanner-icon">🔐</div>
+        </div>
+        <div class="security-badge">
+            <span class="badge-icon">🛡️</span>
+            <span data-translate="encrypted">End-to-End Encrypted</span>
+        </div>
+    </div>
+
+    <!-- Schemes Carousel -->
+    <div class="schemes-carousel" id="schemesCarousel">
+        <h2 class="carousel-title" data-translate="welfareSchemes">Welfare Schemes 2026</h2>
+        <div class="carousel-track" id="carouselTrack">
+            <!-- Scheme cards will be dynamically inserted -->
+        </div>
+        <div class="carousel-nav">
+            <button class="nav-btn prev" id="prevBtn">‹</button>
+            <div class="nav-dots" id="navDots"></div>
+            <button class="nav-btn next" id="nextBtn">›</button>
+        </div>
+    </div>
+
+    <!-- Chat Interface -->
+    <div class="chat-interface" id="chatInterface">
+        <div class="chat-messages" id="chatMessages">
+            <div class="welcome-message floating">
+                <div class="avatar-orb">🤖</div>
+                <div class="message-bubble">
+                    <p data-translate="welcome">Welcome! I'm here to help you access welfare schemes and support.</p>
+                    <p data-translate="askMe">Ask me anything about eligibility, applications, or benefits!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-input-container">
+            <div class="input-wrapper">
+                <button class="input-btn emoji-btn" title="Emoji">😊</button>
+                <input type="text" class="chat-input" id="chatInput" placeholder="Type your message..."
+                    data-translate-placeholder="typeMessage">
+                <button class="input-btn voice-input-btn" id="voiceInputBtn" title="Voice Input">🎤</button>
+                <button class="input-btn send-btn" id="sendBtn" title="Send">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accessibility Toggle -->
+    <button class="accessibility-toggle" id="accessibilityToggle" title="Accessibility Options">
+        <span class="icon">♿</span>
+    </button>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+        <span class="icon">🌙</span>
+    </button>
+
+    <!-- Voice Command Indicator -->
+    <div class="voice-command-indicator" id="voiceCommandIndicator">
+        <div class="voice-wave">
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p class="voice-text" data-translate="listening">Listening...</p>
+    </div>
+
+    <!-- Personalized Plan Modal -->
+    <div class="modal" id="planModal">
+        <div class="modal-content large">
+            <button class="modal-close" id="planModalClose">×</button>
+            <div class="modal-body" id="planModalBody">
+                <h2 data-translate="yourPlan">Your Poverty Reduction Plan</h2>
+                <div class="plan-sections">
+                    <div class="plan-section">
+                        <h3>📈 Progress Overview</h3>
+                        <div class="progress-chart" id="progressChart"></div>
+                    </div>
+                    <div class="plan-section">
+                        <h3>💼 Job Recommendations</h3>
+                        <div class="recommendations" id="jobRecommendations"></div>
+                    </div>
+                    <div class="plan-section">
+                        <h3>🎓 Skill Development</h3>
+                        <div class="recommendations" id="skillRecommendations"></div>
+                    </div>
+                    <div class="plan-section">
+                        <h3>💰 Savings Simulator</h3>
+                        <div class="savings-simulator" id="savingsSimulator"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Eligibility Quiz Modal -->
+    <div class="modal" id="quizModal">
+        <div class="modal-content">
+            <button class="modal-close" id="quizModalClose">×</button>
+            <div class="modal-body" id="quizModalBody">
+                <h2 data-translate="eligibilityQuiz">Eligibility Quiz</h2>
+                <div class="quiz-content" id="quizContent"></div>
+                <div class="quiz-navigation">
+                    <button class="quiz-btn" id="prevQuizBtn" data-translate="previous">Previous</button>
+                    <button class="quiz-btn primary" id="nextQuizBtn" data-translate="next">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AR Preview Modal -->
+    <div class="modal" id="arModal">
+        <div class="modal-content large">
+            <button class="modal-close" id="arModalClose">×</button>
+            <div class="modal-body ar-body" id="arModalBody">
+                <div class="ar-viewport">
+                    <div class="ar-placeholder">
+                        <div class="ar-model" id="arModel"></div>
+                    </div>
+                    <div class="ar-controls">
+                        <button class="ar-control-btn" id="rotateBtn">🔄 Rotate</button>
+                        <button class="ar-control-btn" id="zoomBtn">🔍 Zoom</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Comets Container -->
+    <div class="comets-container" id="cometsContainer"></div>
+
+    <!-- Scheme Detail Modal -->
+    <div class="modal" id="schemeModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">×</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="script-premium.js"></script>
+</body>
+
+</html>
